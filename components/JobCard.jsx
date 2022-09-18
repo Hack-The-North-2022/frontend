@@ -16,7 +16,7 @@ import CardMedia from '@mui/material/CardMedia';
 import { Typography } from '@mui/material';
 
 export default function JobCard(props) {
-  const { title, description, link } = props;
+  const { title, description, link, job_id } = props;
   const router = useRouter();
 
   return (
@@ -37,7 +37,7 @@ export default function JobCard(props) {
       </CardContent>
       <CardActions>
         <Button size="small">Share</Button>
-        <Link href={`/job/${link}`}>
+        <Link href={`/job/${job_id}`}>
           <Button size="small">Learn More</Button>
         </Link>
       </CardActions>

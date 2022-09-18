@@ -83,7 +83,7 @@ export default function Connect() {
             {
               status === 0 && (
                 <Box>
-                  <Box>
+                  <Box sx={{py:2}}>
                     <Typography variant="h6" sx={{py: 2}}>Connect Instance</Typography>
                     <TextField label="Enter pair code" onChange={(e) => updateCode(e)}>
                     </TextField>

@@ -54,3 +54,13 @@ export const callCreateInterview = async (username, job_id)=> {
   let response = await axios.post(url, data);
   return response.data.success
 };
+
+export const callInterview = async (username, interview_id) => {
+  const url = `${API_URL}/interview`
+  const data = {
+    username,
+    interview_id
+  }
+  let response = await axios.post(url, data);
+  return response.data.interview
+}

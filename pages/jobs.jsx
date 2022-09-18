@@ -55,7 +55,7 @@ export default function Jobs() {
       <Box sx={{ display: 'flex', justifyContent: 'center', height: '90vh', flexWrap: 'wrap', width:"100%"}}>
         {
           jobs.map((job, ind) => (
-            <JobCard title={job.title} description={job.job_description} key={ind} link={jobLinks[ind%8]}/>
+            <JobCard title={job.title} description={job.job_description} key={ind} link={jobLinks[ind%8]} job_id={job.job_id}/>
           ))
         }
       </Box>
