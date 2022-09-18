@@ -43,3 +43,14 @@ export const callJobs = async (username)=> {
   let response = await axios.post(url, data);
   return response.data.jobs
 };
+
+export const callCreateInterview = async (username, job_id)=> {
+
+  const url = `${API_URL}/connect_interview`;
+  const data = {
+    username,
+    job_id
+  }
+  let response = await axios.post(url, data);
+  return response.data.success
+};

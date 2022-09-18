@@ -32,12 +32,14 @@ export default function JobCard(props) {
           {title}
         </Typography>
         <Typography variant="body2" color="text.secondary">
-          {description.substring(0,200)}
+          {description.substring(0,150)}...
         </Typography>
       </CardContent>
       <CardActions>
         <Button size="small">Share</Button>
-        <Button size="small">Learn More</Button>
+        <Link href={`/job/${link}`}>
+          <Button size="small">Learn More</Button>
+        </Link>
       </CardActions>
     </Card>
 

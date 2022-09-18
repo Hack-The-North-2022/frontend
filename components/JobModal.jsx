@@ -8,6 +8,7 @@ import Typography from '@mui/material/Typography';
 import TextField from "@mui/material/TextField";
 import AddCircleIcon from '@mui/icons-material/AddCircle';
 import { callAddJob } from 'utils/requests';
+import Swal from 'sweetalert2';
 
 const style = {
   position: 'absolute',
@@ -21,7 +22,8 @@ const style = {
   p: 4,
 };
 
-export default function TransitionsModal() {
+export default function TransitionsModal(props) {
+  const { callback } = props
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -43,11 +45,13 @@ export default function TransitionsModal() {
     let username = localStorage.getItem('username')
     let good = await callAddJob(username, title, description)
     if (good) {
+      callback()
       handleClose()
     } else {
+      handleClose()
       Swal.fire({
         title: 'Error!',
-        text: 'Wrong Code',
+        text: '',
         icon: 'error',
         confirmButtonText: 'Try Again',
       });

@@ -44,18 +44,18 @@ export default function Jobs() {
       getJobs(username)
     }
     console.log('getting jbs')
-  })
+  }, [setJobs])
 
   return (
     <Box>
 
       <Grid container justifyContent="flex-end" sx={{px: 2}}>
-        <JobModal/>
+        <JobModal callback={getJobs}/>
       </Grid>
       <Box sx={{ display: 'flex', justifyContent: 'center', height: '90vh', flexWrap: 'wrap', width:"100%"}}>
         {
           jobs.map((job, ind) => (
-            <JobCard title={job.title} description={job.description} key={job.description} link={jobLinks[ind%8]}/>
+            <JobCard title={job.title} description={job.job_description} key={ind} link={jobLinks[ind%8]}/>
           ))
         }
       </Box>
