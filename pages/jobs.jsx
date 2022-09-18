@@ -10,17 +10,17 @@ import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
 import Swal from 'sweetalert2';
 
+import AddCircleIcon from '@mui/icons-material/AddCircle';
 import { Typography } from '@mui/material';
 import { callAddJob } from 'utils/requests';
+import JobModal from 'components/JobModal';
 import JobCard from 'components/JobCard';
+import { callJobs } from 'utils/requests';
 
 export default function Jobs() {
   const router = useRouter();
 
-  const [code, setCode] = useState('');
-  const updateCode = (event) => {
-    setCode(event.currentTarget.value);
-  };
+  const [jobs, setJobs] = useState([])
 
   const jobLinks= [
     "https://www.experis.com/-/media/project/manpowergroup/experis/experis-us/articles/all_financial_planning_bluewash_rgb_150.jpg",
@@ -33,35 +33,34 @@ export default function Jobs() {
     "https://alis.alberta.ca/media/699122/panel-job-interview-istock-1152769811.jpg"
   ]
 
-  const pairCode = async (e) => {
-    e.preventDefault();
-    let username = localStorage.getItem('username')
-    let good = await callPairCode(username, code);
-    if (good) {
-      Swal.fire({
-        title: 'Success!',
-        text: 'Headset has been paired! Interview will start soon.',
-        icon: 'success',
-        confirmButtonText: 'Okay',
-      });
-    } else {
-      Swal.fire({
-        title: 'Error!',
-        text: 'Wrong Code',
-        icon: 'error',
-        confirmButtonText: 'Try Again',
-      });
+  const getJobs = async (username) => {
+    const responseJobs = await callJobs(username)
+    setJobs(responseJobs)
+  }
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const username = localStorage.getItem('username');
+      getJobs(username)
     }
-  };
+    console.log('getting jbs')
+  })
 
   return (
+    <Box>
+
+      <Grid container justifyContent="flex-end" sx={{px: 2}}>
+        <JobModal/>
+      </Grid>
       <Box sx={{ display: 'flex', justifyContent: 'center', height: '90vh', flexWrap: 'wrap', width:"100%"}}>
-            <JobCard title={"Software Developer"} description={"hello!"}/>
-            <JobCard title="Software Developer" description="hello!"/>
-            <JobCard title="Software Developer" description="hello!"/>
-            <JobCard title="Software Developer" description="hello!"/>
+        {
+          jobs.map((job, ind) => (
+            <JobCard title={job.title} description={job.description} key={job.description} link={jobLinks[ind%8]}/>
+          ))
+        }
       </Box>
 
+    </Box>
 
   );
 }

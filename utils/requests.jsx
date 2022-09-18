@@ -21,3 +21,25 @@ export const callPairCode = async (username, code)=> {
   let response = await axios.post(url, data);
   return response.data.success
 };
+
+export const callAddJob = async (username, title, description)=> {
+
+  const url = `${API_URL}/add_job`;
+  const data = {
+    username,
+    title,
+    description
+  }
+  let response = await axios.post(url, data);
+  return response.data.success
+};
+
+export const callJobs = async (username)=> {
+
+  const url = `${API_URL}/jobs`;
+  const data = {
+    username
+  }
+  let response = await axios.post(url, data);
+  return response.data.jobs
+};
