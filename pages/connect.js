@@ -42,11 +42,11 @@ export default function Connect() {
   };
 
   return (
-      <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '90vh'}}>
+      <Box sx={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', alignItems: 'center', height: '90vh'}}>
         <Paper>
-          <Stack spacing={4} sx={{backgroundColor: 'white', px: 4, py: 4, borderRadius: '25px'}}>
+          <Stack spacing={4} sx={{backgroundColor: 'white', px: 4, pb: 4, borderRadius: '25px'}}>
             <Box>
-              <Typography variant="h6">Pair Code</Typography>
+              <Typography variant="h6" sx={{py: 2}}>Connect Instance</Typography>
               <TextField label="Enter pair code" onChange={(e) => updateCode(e)}>
               </TextField>
             </Box>

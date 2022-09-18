@@ -143,12 +143,12 @@ function Layout(props) {
           {drawer}
         </Drawer>
       </Box>
-      <Container component="main" sx={{ p: 3 }}>
+      <Box sx={{ py: 3, width:'100%' }}>
         <Toolbar />
         <main>
           {children}
         </main>
-      </Container>
+      </Box>
     </Box>
   );
 }
