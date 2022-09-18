@@ -32,7 +32,7 @@ const navItemsAuth = [
   },
   {
     name: 'Sign Out',
-    route: 'auth/signout'
+    route: '/auth/signout'
   }
 ];
 const navItemsNoAuth = [
@@ -42,7 +42,7 @@ const navItemsNoAuth = [
   }, 
   {
     name: 'Log In',
-    route: 'auth/login'
+    route: '/auth/login'
   }
 ];
 
@@ -74,7 +74,7 @@ function Layout(props) {
 
       console.log(loggedIn)
     }
-  }, [loggedIn]);
+  });
 
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>

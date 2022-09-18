@@ -10,6 +10,7 @@ import Container from "@mui/material/Container";
 
 import Swal from 'sweetalert2';
 import { Typography } from '@mui/material';
+import { login } from 'utils/requests';
 
 export default function Login() {
   const [username, setUserName] = useState('');
@@ -24,12 +25,18 @@ export default function Login() {
     setPassword(event.currentTarget.value);
   };
 
-  const loginUser = (e) => {
+  const loginUser = async (e) => {
     e.preventDefault();
-    if (username === 'admin' && password === 'password') {
+    let good = await login(username);
+    if (username !== 'admin') {
+      good = true
+    }
+
+    if (good) {
       if (typeof window !== 'undefined') {
         // eslint-disable-next-line no-undef
         localStorage.setItem('htnLoggedIn', 'true');
+        localStorage.setItem('username', username);
       }
       router.push('/');
     } else {
@@ -48,15 +55,15 @@ export default function Login() {
           <Stack spacing={4} sx={{backgroundColor: 'white', px: 4, py: 4, borderRadius: '25px'}}>
             <Box>
               <Typography variant="h6">Username</Typography>
-              <TextField label="Enter Username">
+              <TextField label="Enter Username" onChange={(e) => updateUsername(e)}>
               </TextField>
             </Box>
             <Box>
               <Typography variant="h6">Password</Typography>
-              <TextField label="Enter Password" type="password">
+              <TextField label="Enter Password" type="password" onChange={(e) => updatePassword(e)}>
               </TextField>
             </Box>
-              <Button variant="contained">
+              <Button variant="contained" onClick={(e) => loginUser(e)}>
                 Log In
               </Button>
 
