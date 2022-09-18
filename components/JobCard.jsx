@@ -32,7 +32,7 @@ export default function JobCard(props) {
           {title}
         </Typography>
         <Typography variant="body2" color="text.secondary">
-          {description.substring(0,150)}...
+          {description.substring(0,90)}...
         </Typography>
       </CardContent>
       <CardActions>

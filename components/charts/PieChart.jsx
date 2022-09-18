@@ -72,7 +72,7 @@ export default class PieChart2D extends Component {
 
   render() {
     return (
-      <div style={{backgroundColor: "white", width:"14em", height: "16em", padding: "1em", boxShadow: "0px 4px 12px rgba(0, 0, 0, 0.25)", borderRadius:"0.5em", marginLeft: "1em", marginBottom: "1em"}}>
+      <div style={{backgroundColor: "white", width:"14em", height: "20em", padding: "1em", boxShadow: "0px 4px 12px rgba(0, 0, 0, 0.25)", borderRadius:"0.5em", marginLeft: "1em", marginBottom: "1em"}}>
         <h1 className="date">{this.props.title}</h1>
         <ResponsiveContainer width="100%" height={180}>
           <PieChart margin={{top: 10, right: 0, bottom: 0, left: 0}}>

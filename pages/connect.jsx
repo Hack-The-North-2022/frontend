@@ -31,6 +31,11 @@ export default function Connect() {
   const updateCode = (event) => {
     setCode(event.currentTarget.value);
   };
+  const updateID = (event) => {
+    console.log('set id')
+    setID(event.currentTarget.value);
+  };
+
 
   const pairCode = async (e) => {
     e.preventDefault();
@@ -43,6 +48,7 @@ export default function Connect() {
         icon: 'success',
         confirmButtonText: 'Okay',
       });
+      await getJobs(username)
       setStatus(1)
     } else {
       Swal.fire({
@@ -97,7 +103,7 @@ export default function Connect() {
             {
               status === 1 && (
                 <Box>
-                  <Select>
+                  <Select onChange={(e) => updateID(e)}>
                     {
                       jobs.map((job, ind) => (
                         <MenuItem value={job.job_id} key={ind}>{job.title}</MenuItem>
@@ -111,7 +117,7 @@ export default function Connect() {
               )
             }
             {
-              status === 3 && (
+              status === 2 && (
                 <Box>
                   <Typography>Please go to headset.</Typography>
                 </Box>

@@ -45,7 +45,7 @@ export default function TransitionsModal(props) {
     let username = localStorage.getItem('username')
     let good = await callAddJob(username, title, description)
     if (good) {
-      callback()
+      await callback()
       handleClose()
     } else {
       handleClose()

@@ -32,10 +32,10 @@ export default function Job(props) {
         {job.description}
       </Typography>
       {
-        job.interviews.map((interview, ind) => (
+        job?.interviews?.map((interview, ind) => (
           <Card key={ind}>
             <CardContent >
-              {interview.title}
+              Interview {ind}
             </CardContent>
             <CardActions>
               <Link href={`/interview/${interview.interview_id}`}>
@@ -50,11 +50,12 @@ export default function Job(props) {
   );
 }
 
-export async function getServerSideProps() {
+export async function getServerSideProps(context) {
   let job = {};
   const { id } = context.query;
   try {
-    job = await getJob(id);
+    job = await getJob(0,id);
+    console.log(job)
   } catch (err) {
     console.log(err.message);
   }

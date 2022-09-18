@@ -64,3 +64,13 @@ export const callInterview = async (username, interview_id) => {
   let response = await axios.post(url, data);
   return response.data.interview
 }
+
+export const getJob = async (username, job_id) => {
+  const url = `${API_URL}/job`
+  const data = {
+    username,
+    job_id
+  }
+  let response = await axios.post(url, data);
+  return response.data
+}

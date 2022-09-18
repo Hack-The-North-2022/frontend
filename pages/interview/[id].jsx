@@ -44,7 +44,7 @@ export default function Interview(props) {
   );
 }
 
-export async function getServerSideProps() {
+export async function getServerSideProps(context) {
   let interview = {};
   const { id } = context.query;
   try {
