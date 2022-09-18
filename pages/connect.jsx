@@ -32,8 +32,7 @@ export default function Connect() {
     setCode(event.currentTarget.value);
   };
   const updateID = (event) => {
-    console.log('set id')
-    setID(event.currentTarget.value);
+    setID(event.target.value);
   };
 
 
@@ -63,7 +62,7 @@ export default function Connect() {
   const createInterview = async (e) => {
     e.preventDefault()
     let username = localStorage.getItem('username')
-    let good = await callCreateInterview(username, jobID);
+    let good = await callCreateInterview(username, jobID, code);
     if (good) {
       Swal.fire({
         title: 'Success!',
@@ -103,7 +102,7 @@ export default function Connect() {
             {
               status === 1 && (
                 <Box>
-                  <Select onChange={(e) => updateID(e)}>
+                  <Select onChange={(e) => updateID(e)} value={jobID}>
                     {
                       jobs.map((job, ind) => (
                         <MenuItem value={job.job_id} key={ind}>{job.title}</MenuItem>

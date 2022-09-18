@@ -19,9 +19,9 @@ export default class BarGraph2D extends Component {
 
     render() {
       return (
-        <div style={{backgroundColor: "white",  width:"27rem", height: "300px", padding: "1em 2.5em 2.5em 0", boxShadow: "0px 4px 12px rgba(0, 0, 0, 0.25)", borderRadius:"0.5em", margin:"1em"}}>
+        <div style={{backgroundColor: "white",  width:"27rem", height: "500px", padding: "-10em -20em -20em -10em", boxShadow: "0px 4px 12px rgba(0, 0, 0, 0.25)", borderRadius:"0.5em", margin:"1em"}}>
         <h1 style={{paddingLeft: "2.5em"}} className="date">{this.props.title}</h1>
-        <ResponsiveContainer width="100%" height="100%" minHeight="200px">
+        <ResponsiveContainer width="100%" height="80%" minHeight="100px">
         <BarChart
           width={600}
           height={300}

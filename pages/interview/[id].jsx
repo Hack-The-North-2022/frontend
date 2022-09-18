@@ -14,6 +14,7 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import { getInterview } from 'utils/requests';
 import PieChart from 'components/charts/PieChart'
+import BarGraph from 'components/charts/BarGraph'
 
 import { Typography } from '@mui/material';
 
@@ -22,22 +23,39 @@ export default function Interview(props) {
   const router = useRouter();
 
   const eye_contact = [
-    { name: 'Maintaining eye', value: 20},
-    { name: 'Non-eye contact', value: 50}
+    { name: 'Maintaining eye', value: 50*Math.random()},
+    { name: 'Non-eye contact', value: 50*Math.random()}
   ]
+
+  const key_words = [
+    { name: 'Used key words', value: 20*Math.random()},
+    { name: 'Non key words', value: 90*Math.random()}
+  ]
+
+  const looked = [
+    { looked: 'Face', value: 20*Math.random()},
+    { looked: 'Table', value: 6*Math.random()},
+    { looked: 'Walls', value: 9*Math.random()},
+    { looked: 'Floor', value: 5*Math.random()}
+  ]
+
+  const gibberish = [
+    { name: 'Umms and ahhs', value: 10*Math.random()},
+    { name: 'Useful words', value: 90*Math.random()}
+  ]
+
 
   return (
     <Container>
       <Typography>
         {interview.interview_id}
       </Typography>
-      <Typography>
-        {interview.title}
-      </Typography>
-      <Typography>
-        {interview.description}
-      </Typography>
+
       <PieChart title={"Eye Contact"} data={eye_contact}/>
+      <PieChart title={"Key words"} data={key_words}/>
+      <PieChart title={"Gibberish"} data={gibberish}/>
+
+      <BarGraph title={"Most Looked at Areas"} data={looked} name="looked"/>
 
     </Container>
 

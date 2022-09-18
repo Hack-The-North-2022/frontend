@@ -2,6 +2,8 @@ import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import Container from '@mui/material/Container'
+import Box from '@mui/material/Box'
+import Typography from '@mui/material/Typography'
 
 export default function Home() {
   return (
@@ -14,8 +16,35 @@ export default function Home() {
 
       <main className={styles.main}>
         <h1 className={styles.title}>
-          An.
+          WINterview is a fully immersive VR interview trainer.
         </h1>
+             <Box
+        component="img"
+        sx={{
+          width: "100%",
+          py:8
+        }}
+        alt="Image1"
+        src="pic1.jpg"
+      />
+        <Typography variant="h4">
+          Equipped with Adhawk Eye Technology, Assembly.ai conversation tech, 
+          and gesture detection, you can expect real-time data and constructive feedback on your interview.
+        </Typography>
+ 
+             <Box
+        component="img"
+        sx={{
+          width: "100%",
+          py:8
+        }}
+        alt="Image2"
+        src="pic2.jpg"
+      />
+         <Typography variant="h4">
+          Get an edge over other applicants and win in your interview today.
+        </Typography>
+ 
       </main>
     </Container>
   )
